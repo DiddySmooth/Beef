@@ -1,0 +1,29 @@
+.formContainerScale{
+    display: flex;
+    
+}
+.graph{
+    max-width:400px;
+    max-height:400px;
+}
+.container{
+    display: flex;
+    align-items: center;
+}
+.hidden{
+    display: none;
+}
+.chooseFromListForm{
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+.columnForm1{
+    margin-right: 100px;
+}
+.columnForm2{
+    margin-right: 100px;
+}
+.columnForm3{
+    margin-right: 100px;
+}
