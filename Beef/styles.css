@@ -17,13 +17,30 @@
     font-size: 18px;
     display: flex;
     justify-content: center;
+    
 }
 .columnForm1{
-    margin-right: 100px;
+    border: 1px solid black;
 }
 .columnForm2{
-    margin-right: 100px;
+    border: 1px solid black;
 }
 .columnForm3{
-    margin-right: 100px;
+    border: 1px solid black;
+}
+.columnTitle{
+    padding: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    border: 1px solid;
+    margin: 0px;
+}
+.columnLabel{
+    margin: 0px;
+    border: 1px solid;
+    padding: 5px;
+}
+.header{
+    width: 100vw;
+    margin: 0px;
 }

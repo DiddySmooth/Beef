@@ -1,24 +1,30 @@
 let questions = [ 
     {
-        "title": "Question 1 Test / 10 - Feeder Cattle Futures (near contract (March 2021))",
-        "question": "The March 2021 feeder cattle futures contract closed at 141.5 on Friday, January 22. What are your expectations for the March contract's closing price as follows?",
+        "title": "Question 1 Test / 10 - Feeder Cattle Market Expectations)",
+        "question": `The nearby feeder cattle futures contract (March 2021) closed at 137.25 on Friday, January 22, which was up 6.6% from the previous Friday’s close at 128.17.What are your expectations for the near contract’s closing price as follows?  `,
         "type": "chooseFromList",
+        "price": 100,
+        "columnTitle1": "Friday, 01/29 (next week)",
+        "columnTitle2": "Friday, 02/26 (next month)",
+        "columnTitle3": "Friday, 03/26 (three months)"
+    },
+    {
+        "title": "Question 2 Test / 10 - Fed Cattle Market Expectations)",
+        "question": "The nearby fed cattle futures contract (March 2021) closed at 137.25 on Friday, January 22, which was up 6.6% from the previous Friday’s close at 128.17.What are your expectations for the near contract’s closing price as follows?",
+        "type": "chooseFromList",
+        "price": 150,
         "columnTitle1": "NextFriday",
         "columnTitle2": "One month from now",
         "columnTitle3": "Contract End"
     },
     {
-        "title": "Question 2 Test / 10 - Feeder Cattle Futures (far contract (November 2021))",
-        "question": "The November 2021 feeder cattle futures contract closed at 154.425 on Friday, January 22. WhatareyourexpectationsfortheNovember contract’s closing price as follows?",
-        "type": "chooseFromPercentage",
+        "title": "Question 3 Test / 10 - Corn Market Expectations",
+        "question": "The nearby corn futures contract (March 2021) closed at 137.25 on Friday, January 22, which was up 6.6% from the previous Friday’s close at 128.17.What are your expectations for the near contract’s closing price as follows??",
+        "type": "chooseFromList",
+        "price": 170,
         "columnTitle1": "NextFriday",
         "columnTitle2": "One month from now",
         "columnTitle3": "Contract End"
-    },
-    {
-        "title": "Question 3 Test / 10 - Cattle on Feed Report (Inventory)",
-        "question": "The January 2021 Cattle on Feed Report will be released on Friday, January 22. Whatareyourexpectations forCattle on Feed Inventory vs. last year?",
-        "type": "range"
     },
     {
         "title": "Question 4 Test / 10 - Cattle on Feed Report (Placements)",
@@ -89,17 +95,28 @@ const chooseFromList = () => {
     questionColumn1.append(columnTitle1)
 
     for(i=0;i<5;i++){
-        const labelValues = ["Really Bad", "Bad", "Nuetral", "Good", "Really Good"]
+        const price = questions[questionNum].price
+        const labelValues = [
+            `Much Higher \n (+ 5% or more: over $ ${price + (price * .05)})`,
+            `Higher \n (+ 2% to + 4.9%: $${price + (price * .02)} to $${price + (price * .049)} )`,
+            `Little Change \n (+ 1.9% to -1.9%: $${price + (price * .019)} to $${price - (price * .019)})`,
+            `Lower \n (- 2% to -4.9%: $${price - (price * .02)} to $${price - (price * .049)})`,
+            `Much Lower \n (- 5% or more: under $ ${price - (price * .05)})`]
         const button1 = document.createElement('input')
         const label1 = document.createElement('label')
         const br = document.createElement('br')
+        const labelDiv = document.createElement('div')
         label1.innerText = labelValues[i]
+        labelDiv.classList.add('columnLabel')
+
         button1.type = "radio"
         button1.name = "response1"
         button1.value = labelValues[i]
 
-        questionColumn1.append(button1)
-        questionColumn1.append(label1)  
+        labelDiv.append(button1)
+        labelDiv.append(label1)
+        
+        questionColumn1.append(labelDiv)  
         questionColumn1.append(br)
     }
 
@@ -116,17 +133,28 @@ const chooseFromList = () => {
     questionColumn2.append(columnTitle2)
 
     for(i=0;i<5;i++){
-        const labelValues = ["Really Bad", "Bad", "Nuetral", "Good", "Really Good"]
+        const price = questions[questionNum].price
+        const labelValues = [
+            `Much Higher \n (+ 10% or more: over $ ${price + (price * .1)})`,
+            `Higher \n (+ 5% to + 9.9%: $${price + (price * .05)} to $${price + (price * .099)} )`,
+            `Little Change \n (+ 4.9% to -4.9%: $${price + (price * .049)} to $${price - (price * .049)})`,
+            `Lower \n (- 5% to -9.9%: $${price - (price * .05)} to $${price - (price * .099)})`,
+            `Much Lower \n (- 10% or more: under $ ${price - (price * .1)})`]
         const button1 = document.createElement('input')
         const label1 = document.createElement('label')
         const br = document.createElement('br')
+        const labelDiv = document.createElement('div')
+
         label1.innerText = labelValues[i]
+        labelDiv.classList.add('columnLabel')
         button1.type = "radio"
         button1.name = "response2"
         button1.value = labelValues[i]
 
-        questionColumn2.append(button1)
-        questionColumn2.append(label1)  
+        labelDiv.append(button1)
+        labelDiv.append(label1)
+
+        questionColumn2.append(labelDiv)  
         questionColumn2.append(br)
     }
 
@@ -143,17 +171,27 @@ const chooseFromList = () => {
     questionColumn3.append(columnTitle3)
 
     for(i=0;i<5;i++){
-        const labelValues = ["Relaly Bad", "Bad", "Nuetral", "Good", "Really Good"]
+        const price = questions[questionNum].price
+        const labelValues = [
+            `Much Higher \n (+ 20% or more: over $ ${price + (price * .2)})`,
+            `Higher \n (+ 10% to + 19.9%: $${price + (price * .1)} to $${price + (price * .199)} )`,
+            `Little Change \n (+ 9.9% to -9.9%: $${price + (price * .099)} to $${price - (price * .099)})`,
+            `Lower \n (- 10% to -19.9%: $${price - (price * .1)} to $${price - (price * .199)})`,
+            `Much Lower \n (- 20% or more: under $ ${price - (price * .2)})`]
         const button1 = document.createElement('input')
         const label1 = document.createElement('label')
         const br = document.createElement('br')
+        const labelDiv = document.createElement('div')
+
         label1.innerText = labelValues[i]
+        labelDiv.classList.add('columnLabel')
         button1.type = "radio"
         button1.name = "response3"
         button1.value = labelValues[i]
 
-        questionColumn3.append(button1)
-        questionColumn3.append(label1)  
+        labelDiv.append(button1)
+        labelDiv.append(label1)
+        questionColumn3.append(labelDiv)  
         questionColumn3.append(br)
     }
     scale.append(questionColumn3)
@@ -226,6 +264,8 @@ const chooseFromPercentage = () => {
     scale.append(questionColumn3)
 
 }
+
+
 previous.addEventListener('click', (event) => {
     while(scale.firstChild){
         scale.removeChild(scale.firstChild)
@@ -234,7 +274,7 @@ previous.addEventListener('click', (event) => {
     if (questionNum >= 1){
         questionNum --
         title.innerText = questions[questionNum].title
-        questions.innerText = questions[questionNum].question
+        question.innerText = questions[questionNum].question
         
     }
     renderQuestion()
@@ -247,7 +287,7 @@ next.addEventListener('click', (event) => {
     if (questionNum < questions.length - 1){
         questionNum ++
         title.innerText = questions[questionNum].title
-        questions.innerText = questions[questionNum].question
+        question.innerText = questions[questionNum].question
         
     }
     renderQuestion()
