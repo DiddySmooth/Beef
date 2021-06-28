@@ -29,7 +29,7 @@ let questions = [
     {
         "title": "Question 4 Test / 10 - Cattle on Feed Report (Placements)",
         "question": "The January 2021 Cattle on Feed Report will be released on Friday, January 22. Whatareyourexpectations forCattle on Feed Placements vs. last year?",
-        "type": "range"
+        "type": "chooseFromPercentage"
     },
     {
         "title": "Question 5 Test / 10",
@@ -196,7 +196,6 @@ const chooseFromList = () => {
     }
     scale.append(questionColumn3)
 }
-
 
 const chooseFromPercentage = () => {
     ///// Column 1 //////
